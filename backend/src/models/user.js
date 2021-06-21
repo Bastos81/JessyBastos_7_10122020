@@ -54,15 +54,15 @@ module.exports = (sequelize, DataTypes) => {
         }
       },
       imageUrl: DataTypes.STRING,
-      deleted: {
-        type: DataTypes.BOOLEAN,
-        defaultValue: false
-      },
       bio: {
         type: Sequelize.STRING,
         allowNull: true
       },
-      isAdmin: {
+      admin: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false
+      },
+      deleted: {
         type: DataTypes.BOOLEAN,
         defaultValue: false
       }

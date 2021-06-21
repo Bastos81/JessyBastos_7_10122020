@@ -2,7 +2,7 @@
 const { Model } = require('sequelize')
 
 module.exports = (sequelize, DataTypes) => {
-  class Like extends Model {
+  class Likes extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       Likes.belongsTo(models.Post, { foreignKey: 'postId' })
     }
   }
-  Like.init(
+  Likes.init(
     {
       postId: DataTypes.INTEGER,
       userId: DataTypes.INTEGER
@@ -24,34 +24,18 @@ module.exports = (sequelize, DataTypes) => {
     }
   )
 
-  Like.afterCreate(async like => {
+  Likes.afterCreate(async like => {
     const post = await like.getPost()
     await post.update({
       likesCount: post.likesCount + 1
     })
   })
-  Like.afterDestroy(async like => {
+  Likes.afterDestroy(async like => {
     const post = await like.getPost()
     post.update({
       likesCount: post.likesCount - 1
     })
   })
 
-  Like.afterCreate(async like => {
-    const post = await like.getPost()
-    const user = await like.getUser()
-
-    if (user.id == post.userId) return
-
-    const notification = await sequelize.models.Notification.create({
-      content: `<b>${user.firstName} ${
-        user.lastName
-      }</b> a aimé votre publication du ${post.readableCreatedAt()}`,
-      recipientUserId: post.userId,
-      postId: post.id,
-      senderUserId: user.id
-    })
-  })
-
-  return Like
+  return Likes
 }

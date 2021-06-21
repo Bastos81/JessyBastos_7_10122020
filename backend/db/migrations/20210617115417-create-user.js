@@ -33,7 +33,11 @@ module.exports = {
         allowNull: true,
         type: Sequelize.STRING
       },
-      isAdmin: {
+      admin: {
+        allowNull: false,
+        type: Sequelize.BOOLEAN
+      },
+      deleted: {
         allowNull: false,
         type: Sequelize.BOOLEAN
       },
