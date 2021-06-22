@@ -3,9 +3,9 @@ const bodyParser = require('body-parser')
 
 const app = express()
 
-//*const path = require('path')
+const path = require('path')
 
-//*const auth = require('./src/middleware/auth')
+const auth = require('./src/middleware/auth')
 
 //*const userCtrl = require('./src/controllers/user')
 //*const notificationsCtrl = require('./src/controllers/notifications')
