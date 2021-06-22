@@ -1,8 +1,9 @@
 const express = require('express')
-const bodyParser = require('body-parser')
+//*const bodyParser = require('body-parser')
 
 const app = express()
-
+const helmet = require('helmet');
+const cors = require('cors')
 const path = require('path')
 
 const postsRoutes = require('./src/routes/posts')
@@ -21,7 +22,9 @@ app.use((req, res, next) => {
   next()
 })
 
-app.use(bodyParser.json())
+app.use(express.json());
+app.use(helmet());
+app.use(cors());
 
 app.use('/public', express.static(path.join(__dirname, 'public')))
 
