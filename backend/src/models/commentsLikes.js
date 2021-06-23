@@ -30,10 +30,27 @@ module.exports = (sequelize, DataTypes) => {
       commentsLikesCount: post.commentsLikesCount + 1
     })
   })
+
   CommentsLikes.afterDestroy(async commentsLikes => {
     const comments = await commentsLikes.getComments()
     await comments.update({
       commentsLikesCount: post.commentsLikesCount - 1
+    })
+  })
+
+  CommentsLikes.afterCreate(async commentsLikes => {
+    const comments = await commentsLikes.getComments()
+    const user = await commentsLikes.getUser()
+
+    if (user.id == comments.userId) return
+
+    const notification = await sequelize.models.Notification.create({
+      content: `<b>${user.firstName} ${
+        user.lastName
+      }</b> a aimé votre commentaire du ${comments.readableCreatedAt()}`,
+      recipientUserId: comments.userId,
+      commentsId: comments.id,
+      senderUserId: user.id
     })
   })
   

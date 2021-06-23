@@ -17,28 +17,31 @@ module.exports = (sequelize, DataTypes) => {
   Comments.init(
     {
       postId: DataTypes.INTEGER,
-      userId: DataTypes.INTEGER,
       content: {
         type: DataTypes.TEXT,
         allowNull: false
-      }
+      },
+      userId: DataTypes.INTEGER
     },
     {
       sequelize,
       modelName: 'Comments'
     }
   )
-  
-  Comments.afterCreate(async comments => {
-    const post = await comments.getPost()
-    await post.update({
-      commentsCount: post.commentsCount + 1
-    })
-  })
-  Comments.afterDestroy(async comments => {
-    const post = await comments.getPost()
-    post.update({
-      commentsCount: post.commentsCount - 1
+
+  Comments.afterCreate(async comment => {
+    const post = await comment.getPost()
+    const user = await comment.getUser()
+
+    if (user.id == post.userId) return
+
+    const notification = await sequelize.models.Notification.create({
+      content: `<b>${user.firstName} ${
+        user.lastName
+      }</b> a commenté votre publication du ${post.readableCreatedAt()}`,
+      recipientUserId: post.userId,
+      postId: post.id,
+      senderUserId: user.id
     })
   })
 
