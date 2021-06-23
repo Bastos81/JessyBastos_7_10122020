@@ -5,7 +5,6 @@ const postsCtrl = require('../controllers/posts')
 const commentsCtrl = require('../controllers/comments')
 const likesCtrl = require('../controllers/likes')
 const commentsLikesCtrl = require('../controllers/commentsLikes')
-const notificationsCtrl = require('./src/controllers/notifications')
 
 const auth = require('../middleware/auth')
 const multer = require('../middleware/multer-config')
@@ -29,8 +28,5 @@ router.get('/:postId/likes', auth, likesCtrl.getAllLikesOfOnePost)
 router.post('/:postId/commentsId/likes', auth, commentsLikesCtrl.likeOneComments)
 router.get('/:postId/commentsId/like', auth, commentsLikesCtrl.getLikeOnOneComments)
 router.get('/:postId/commentsId/likes', auth, commentsLikesCtrl.getAllLikesOfOneComments)
-
-router.get('/api/notifications', auth, notificationsCtrl.getNotificationsOfOneUser)
-router.delete('/api/notifications/:id', auth, notificationsCtrl.deleteNotification)
 
 module.exports = router

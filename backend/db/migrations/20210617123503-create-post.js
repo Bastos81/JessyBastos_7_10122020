@@ -26,11 +26,13 @@ module.exports = {
       },
       likesCount: {
         allowNull: false,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        defaultValue: '0'
       },
       commentsCount: {
         allowNull: false,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        defaultValue: '0'
       },
       createdAt: {
         allowNull: false,
