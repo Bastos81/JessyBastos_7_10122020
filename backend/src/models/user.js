@@ -55,7 +55,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       imageUrl: DataTypes.STRING,
       bio: {
-        type: Sequelize.STRING,
+        type: DataTypes.STRING,
         allowNull: true
       },
       admin: {

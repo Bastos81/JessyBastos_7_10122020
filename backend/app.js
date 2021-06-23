@@ -7,7 +7,8 @@ const cors = require('cors')
 const path = require('path')
 
 const postsRoutes = require('./src/routes/posts')
-const userRoutes = require('./src/routes/user')
+const userRoutes = require('./src/routes/user');
+const { sequelize } = require('./src/models');
 
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*')
