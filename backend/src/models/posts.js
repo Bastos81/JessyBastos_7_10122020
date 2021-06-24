@@ -2,6 +2,7 @@
 const { Model } = require('sequelize')
 
 const { deleteFile } = require('../middleware/deleteFile')
+const moment = require('moment')
 
 module.exports = (sequelize, DataTypes) => {
   class Post extends Model {
@@ -14,6 +15,11 @@ module.exports = (sequelize, DataTypes) => {
       Post.belongsTo(models.User, { foreignKey: 'userId' })
       Post.hasMany(models.Comments)
       Post.hasMany(models.Likes)
+    }
+    readableCreatedAt () {
+      return moment(this.createdAt)
+        .locale('fr')
+        .format('LL')
     }
   }
   Post.init(
