@@ -9,7 +9,7 @@
       <span v-if="count > 2">Afficher {{ count - 1 }} autres commentaires</span>
       <span v-else>Afficher {{ count - 1 }} autre commentaire</span>
     </button>
-    <div class="comment mb-2 text-left" v-for="comment in list">
+    <div class="comment mb-2 text-left" v-for="comment in list" :key="comment.id">
       <Comment
         @commentDeleted="removeComment"
         :comment="comment"
@@ -23,8 +23,6 @@
 
 <script>
 import { apiClient } from '../services/ApiClient'
-import router from '../router/index'
-import PostsList from '../components/PostsList'
 import CreateComment from './CreateComment'
 import Comment from './Comment'
 
@@ -34,7 +32,7 @@ export default {
     CreateComment,
     Comment
   },
-  props: ['post'],
+  props: ['post', 'commentsCount'],
   data () {
     return {
       list: [],
@@ -70,6 +68,8 @@ export default {
 .comment-box {
   background-color: rgba(108, 117, 125, 0.1);
   padding: 0.375rem 0.75rem;
+  padding-left: 15px;
+  text-align: left;
   border-radius: 0.25rem;
   margin-bottom: 0;
 }

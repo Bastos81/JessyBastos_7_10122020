@@ -20,7 +20,7 @@
       "
     >
       <b-card class="border-0" @click="toggleActions">
-        <div v-for="notification in notificationsList">
+        <div v-for="notification in notificationsList" :key="notification.id">
           <router-link
             :to="{ name: 'OnePost', params: { postId: notification.postId } }"
             @click.native="deleteNotification(notification)"
@@ -92,7 +92,7 @@ export default {
       this.notificationsList = res.notifications
     },
     async deleteNotification (notificationToDelete) {
-      const res = await apiClient.delete(
+      await apiClient.delete(
         `api/notifications/${notificationToDelete.id}`
       )
       this.notificationsList = this.notificationsList.filter(

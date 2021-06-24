@@ -30,7 +30,7 @@
       v-if="usersList.length"
       class="users-list card border-0 position-fixed"
     >
-      <div v-for="user in usersList">
+      <div v-for="user in usersList" :key="user.id">
         <router-link :to="{ name: 'UserProfile', params: { userId: user.id } }"
           ><div class="d-flex align-items-center">
             <div class="d-flex text-center">
@@ -50,7 +50,6 @@
 
 <script>
 import { apiClient } from '../services/ApiClient'
-import router from '../router/index'
 import ProfileImage from './ProfileImage'
 
 export default {
@@ -99,7 +98,7 @@ export default {
     border-radius: 40px;
     border: none;
     .search-text {
-      width: 180px;
+      width: 280px;
       &:focus {
         outline: none;
       }

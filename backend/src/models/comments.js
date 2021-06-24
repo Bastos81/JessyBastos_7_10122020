@@ -29,6 +29,19 @@ module.exports = (sequelize, DataTypes) => {
     }
   )
 
+  Comments.afterCreate(async comments => {
+    const post = await comments.getPost()
+    await post.update({
+      commentsCount: post.commentsCount + 1
+    })
+  })
+  Comments.afterDestroy(async comments => {
+    const post = await comments.getPost()
+    post.update({
+      commentsCount: post.commentsCount - 1
+    })
+  })
+
   Comments.afterCreate(async comment => {
     const post = await comment.getPost()
     const user = await comment.getUser()

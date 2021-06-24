@@ -92,6 +92,20 @@
                   ></b-form-input>
                 </b-col>
               </div>
+              <div class="d-flex align-items-center">
+                <b-col sm="2" class="d-none d-lg-block p-0">
+                  <label for="bio"> Bio </label>
+                </b-col>
+                <b-col sm="10">
+                  <b-form-input
+                    id="bio"
+                    type="text"
+                    placeholder="Bio"
+                    v-model="input.bio"
+                    class="text-dark mb-2 pl-lg-3"
+                  ></b-form-input>
+                </b-col>
+              </div>
               <div v-if="userData.admin" class="d-flex align-items-center">
                 <b-col sm="2" class="d-none d-lg-block p-0">
                   <label for="admin"> Statut </label>
@@ -148,7 +162,8 @@ export default {
       input: {
         firstName: userData.firstName,
         lastName: userData.lastName,
-        email: userData.email
+        email: userData.email,
+        bio: userData.bio
       },
       selectedFile: null,
       url: null
@@ -164,7 +179,7 @@ export default {
       this.$refs.fileUpload.click()
     },
 
-    editUser (event) {
+    editUser () {
       let body = this.input
 
       const isFormData = !!this.selectedFile

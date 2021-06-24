@@ -30,7 +30,6 @@
 
 <script>
 import { apiClient } from '../services/ApiClient'
-import router from '../router/index'
 import ProfileImage from './ProfileImage'
 
 export default {
@@ -46,7 +45,7 @@ export default {
     }
   },
   methods: {
-    async createComment (event) {
+    async createComment () {
       if (!this.content.trim().length) return
 
       const { comment } = await apiClient.post(

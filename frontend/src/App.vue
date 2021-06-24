@@ -2,12 +2,12 @@
   <div id="app">
     <div
       id="nav"
-      class="d-flex sticky-top justify-content-start justify-content-sm-center mb-3 p-3"
+      class="d-flex sticky-top justify-content-start justify-content-sm-center mb-3"
     >
       <router-link to="/">
         <img
           id="logo"
-          :src="require('./assets/logos/icon-left-font.png')"
+          :src="require('./assets/logos/icon-above-font.png')"
           alt="logo Groupomania"
         />
       </router-link>
@@ -30,7 +30,7 @@ export default {
 
 <style lang="scss">
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;

@@ -1,9 +1,9 @@
 <template>
   <div>
     <div>
+      <ProfileButton />
       <UserSearch />
       <Notifications />
-      <ProfileButton />
     </div>
   </div>
 </template>

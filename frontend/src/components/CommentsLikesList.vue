@@ -1,9 +1,9 @@
 <template>
   <div>
     <button
-      v-b-modal="`modal-likes-${post.id}`"
-      @click="fetchLikesList"
-      v-if="likesCount > 0"
+      v-b-modal="`modal-likes-${post.id}-${comments.id}`"
+      @click="fetchCommentsLikesList"
+      v-if="commentsLikesCount > 0"
       class="like-btn d-flex align-items-center my-2 mt-lg-0 mb-lg-3 ml-2 text-left"
       aria-label="Afficher les likes"
     >
@@ -17,21 +17,21 @@
           />
         </svg>
       </div>
-      <span class="likes-number ml-2">{{ likesCount }}</span>
+      <span class="commentsLikes-number ml-2">{{ commentsLikesCount }}</span>
     </button>
-    <b-modal :id="`modal-likes-${post.id}`" :title="`${likesCount} J'aime`">
-      <div v-for="like in likesList" :key="like.id">
+    <b-modal :id="`modal-likes-${post.id}`" :title="`${commentsLikesCount} J'aime`">
+      <div v-for="commentsLike in commentsLikesList" :key="commentsLike.id">
         <router-link
-          :to="{ name: 'UserProfile', params: { userId: like.User.id } }"
+          :to="{ name: 'UserProfile', params: { userId: commentsLike.User.id } }"
           ><div class="d-flex align-items-center">
             <div class="d-flex text-center">
               <ProfileImage
-                :src="like.User.imageUrl"
+                :src="commentsLike.User.imageUrl"
                 customClass="like-profile-picture"
                 divCustomClass="div-like-picture"
               />
             </div>
-            <p>{{ like.User.firstName }} {{ like.User.lastName }}</p>
+            <p>{{ commentLike.User.firstName }} {{ commentLike.User.lastName }}</p>
           </div></router-link
         >
       </div>
@@ -45,20 +45,20 @@ import { apiClient } from '../services/ApiClient'
 import ProfileImage from './ProfileImage'
 
 export default {
-  name: 'LikesList',
+  name: 'CommentsLikesList',
   components: {
     ProfileImage
   },
-  props: ['post', 'likesCount'],
+  props: ['post', 'commentsLikesCount'],
   data () {
     return {
-      likesList: []
+      commentsLikesList: []
     }
   },
   methods: {
     async fetchLikesList () {
-      const res = await apiClient.get(`api/posts/${this.post.id}/likes`)
-      this.likesList = res.allLikes
+      const res = await apiClient.get(`api/posts/${this.post.id}/${this.comments.id}/likes`)
+      this.commentsLikesList = res.allLikes
     }
   }
 }
@@ -115,8 +115,8 @@ a {
     font-size: 14px;
   }
 
-  .likes-number {
-    font-size: 12px;
+  .commentsLikes-number {
+    font-size: 25px;
   }
 }
 
