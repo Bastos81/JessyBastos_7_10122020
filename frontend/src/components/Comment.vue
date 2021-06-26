@@ -94,25 +94,25 @@ export default {
   },
   props: ['comment', 'post'],
   async mounted () {
-    const res = await apiClient.get(`api/posts/${this.post.id}/${this.comments.id}/like`)
-    this.likesThisComment = res.commentslike
+    const res = await apiClient.get(`api/posts/${this.post.id}/comments/${this.comment.id}/commentsLike`)
+    this.likesThisComment = res.commentsLike
   },
   data () {
     return {
       userData: JSON.parse(localStorage.getItem('userData')),
       isEditing: false,
       likesThisComment: false,
-      commentsLikesCount: this.post.commentsLikesCount
+      commentsLikesCount: this.comment.commentsLikesCount
     }
   },
   methods: {
     ...mapActions(['displayNotification']),
 
     async likeOrUnlikeComment () {
-      const res = await apiClient.post(`api/posts/${this.post.id}/comments/${this.comments.id}/likes`)
+      const res = await apiClient.post(`api/posts/${this.post.id}/comments/${this.comment.id}/commentsLikes`)
 
-      if (res.like !== this.likesThisPost) {
-        this.commentsLikesCount += res.like ? 1 : -1
+      if (res.commentsLike !== this.likesThisComment) {
+        this.commentsLikesCount += res.commentsLike ? 1 : -1
       }
 
       this.likesThisComment = res.commentsLike

@@ -1,7 +1,7 @@
 <template>
   <div>
     <button
-      v-b-modal="`modal-likes-${post.id}-${comments.id}`"
+      v-b-modal="`modal-commentsLikes-${comment.id}`"
       @click="fetchCommentsLikesList"
       v-if="commentsLikesCount > 0"
       class="like-btn d-flex align-items-center my-2 mt-lg-0 mb-lg-3 ml-2 text-left"
@@ -19,7 +19,7 @@
       </div>
       <span class="commentsLikes-number ml-2">{{ commentsLikesCount }}</span>
     </button>
-    <b-modal :id="`modal-likes-${post.id}`" :title="`${commentsLikesCount} J'aime`">
+    <b-modal :id="`modal-likes-${comment.id}`" :title="`${commentsLikesCount} J'aime`">
       <div v-for="commentsLike in commentsLikesList" :key="commentsLike.id">
         <router-link
           :to="{ name: 'UserProfile', params: { userId: commentsLike.User.id } }"
@@ -31,7 +31,7 @@
                 divCustomClass="div-like-picture"
               />
             </div>
-            <p>{{ commentLike.User.firstName }} {{ commentLike.User.lastName }}</p>
+            <p>{{ commentsLike.User.firstName }} {{ commentsLike.User.lastName }}</p>
           </div></router-link
         >
       </div>
@@ -49,16 +49,16 @@ export default {
   components: {
     ProfileImage
   },
-  props: ['post', 'commentsLikesCount'],
+  props: ['post', 'comment', 'commentsLikesCount'],
   data () {
     return {
       commentsLikesList: []
     }
   },
   methods: {
-    async fetchLikesList () {
-      const res = await apiClient.get(`api/posts/${this.post.id}/${this.comments.id}/likes`)
-      this.commentsLikesList = res.allLikes
+    async fetchCommentsLikesList () {
+      const res = await apiClient.get(`api/posts/${this.post.id}/comments/${this.comment.id}/commentsLikes`)
+      this.commentsLikesList = res.allCommentsLikes
     }
   }
 }
