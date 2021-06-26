@@ -16,13 +16,13 @@ module.exports = (sequelize, DataTypes) => {
   }
   CommentsLikes.init(
     {
-      commentsId: DataTypes.INTEGER,
       postId: DataTypes.INTEGER,
+      commentsId: DataTypes.INTEGER,
       userId: DataTypes.INTEGER
     },
     {
       sequelize,
-      modelName: 'commentsLikes'
+      modelName: 'CommentsLikes'
     }
   )
 
@@ -40,21 +40,7 @@ module.exports = (sequelize, DataTypes) => {
     })
   })
 
-  CommentsLikes.afterCreate(async commentsLike => {
-    const comment = await commentsLike.getComments()
-    const user = await commentsLike.getUser()
 
-    if (user.id == comment.userId) return
-
-    const notification = await sequelize.models.Notification.create({
-      content: `<b>${user.firstName} ${
-        user.lastName
-      }</b> a aimé votre commentaire du ${comment.readableCreatedAt()}`,
-      recipientUserId: comment.userId,
-      commentsId: comment.id,
-      senderUserId: user.id
-    })
-  })
   
   return CommentsLikes
 }

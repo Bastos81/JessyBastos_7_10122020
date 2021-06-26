@@ -43,7 +43,7 @@
         />
       </div>
     </div>
-    <CommentsLikesList :post="post" :commentsLikesCount="commentsLikesCount" />
+    <CommentsLikesList :comment="comment" :commentsLikesCount="commentsLikesCount" />
     <button
           @click="likeOrUnlikeComment"
           class="react-btn footer-btn btn-block"

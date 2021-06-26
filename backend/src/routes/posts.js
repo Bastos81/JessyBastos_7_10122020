@@ -25,8 +25,8 @@ router.post('/:postId/likes', auth, likesCtrl.likeOnePost)
 router.get('/:postId/like', auth, likesCtrl.getLikeOnOnePost)
 router.get('/:postId/likes', auth, likesCtrl.getAllLikesOfOnePost)
 
-router.post('/:postId/comments/:id/commentsLikes', auth, commentsLikesCtrl.likeOneComments)
-router.get('/:postId/comments/:id/commentsLike', auth, commentsLikesCtrl.getLikeOnOneComments)
-router.get('/:postId/comments/:id/commentsLikes', auth, commentsLikesCtrl.getAllLikesOfOneComments)
+router.post('/:postId/comments/:commentsId/commentsLikes', auth, commentsLikesCtrl.likeOneComments)
+router.get('/:postId/comments/:commentsId/commentsLike', auth, commentsLikesCtrl.getLikeOnOneComments)
+router.get('/:postId/comments/:commentsId/commentsLikes', auth, commentsLikesCtrl.getAllLikesOfOneComments)
 
 module.exports = router

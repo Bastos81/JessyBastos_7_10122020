@@ -4,7 +4,7 @@ const { CommentsLikes } = db.sequelize.models
 exports.likeOneComments = async (req, res, next) => {
   try {
     const existingCommentsLike = await CommentsLikes.findOne({
-      where: { userId: req.user.id, postId: req.params.postId, commentsId: req.params.commentsId }
+      where: { userId: req.user.id, commentsId: req.params.commentsId},
     })
     if (existingCommentsLike) {
       await existingCommentsLike.destroy()
@@ -21,7 +21,7 @@ exports.likeOneComments = async (req, res, next) => {
 exports.getLikeOnOneComments = async (req, res, next) => {
   try {
     const existingCommentsLike = await CommentsLikes.findOne({
-      where: { userId: req.user.id, postId: req.params.postId, commentsId: req.params.commentsId }
+      where: { userId: req.user.id, commentsId: req.params.commentsId }
     })
     res.status(200).json({ commentsLikes: existingCommentsLike ? true : false })
   } catch (error) {

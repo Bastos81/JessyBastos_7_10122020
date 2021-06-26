@@ -111,7 +111,6 @@
 
 <script>
 import { apiClient } from '../services/ApiClient'
-import router from '../router/index'
 import EditPost from '../components/EditPost'
 import ProfileImage from './ProfileImage'
 import CommentsList from '../components/CommentsList'

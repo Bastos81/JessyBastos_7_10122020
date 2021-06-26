@@ -12,16 +12,18 @@ module.exports = (sequelize, DataTypes) => {
     static associate (models) {
       Comments.belongsTo(models.User, { foreignKey: 'userId' })
       Comments.belongsTo(models.Post, { foreignKey: 'postId' })
+      Comments.hasMany(models.CommentsLikes)
     }
   }
   Comments.init(
     {
       postId: DataTypes.INTEGER,
+      userId: DataTypes.INTEGER,
       content: {
         type: DataTypes.TEXT,
         allowNull: false
       },
-      userId: DataTypes.INTEGER
+      commentsLikesCount: DataTypes.INTEGER
     },
     {
       sequelize,
@@ -29,14 +31,14 @@ module.exports = (sequelize, DataTypes) => {
     }
   )
 
-  Comments.afterCreate(async comments => {
-    const post = await comments.getPost()
+  Comments.afterCreate(async comment => {
+    const post = await comment.getPost()
     await post.update({
       commentsCount: post.commentsCount + 1
     })
   })
-  Comments.afterDestroy(async comments => {
-    const post = await comments.getPost()
+  Comments.afterDestroy(async comment => {
+    const post = await comment.getPost()
     post.update({
       commentsCount: post.commentsCount - 1
     })
