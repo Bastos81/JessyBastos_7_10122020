@@ -40,6 +40,24 @@ module.exports = (sequelize, DataTypes) => {
     })
   })
 
+  CommentsLikes.afterCreate(async commentsLike => {
+    const post = await commentsLike.getPost()
+    const comment = await commentsLike.getComment()
+    const user = await commentsLike.getUser()
+
+    if (user.id == comment.userId) return
+
+    const notification = await sequelize.models.Notification.create({
+      content: `<b>${user.firstName} ${
+        user.lastName
+      }</b> a aimé votre commentaire du ${post.readableCreatedAt()}`,
+      recipientUserId: post.userId,
+      postId: post.id,
+      commentsId: comment.id,
+      senderUserId: user.id
+    })
+  })
+
 
   
   return CommentsLikes

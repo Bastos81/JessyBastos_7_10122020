@@ -22,7 +22,8 @@ module.exports = {
         references: {
           model: 'Comments',
           key: 'id'
-        }
+        },
+        onDelete: 'CASCADE',
       },
       userId: {
         allowNull: false,

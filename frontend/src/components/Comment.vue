@@ -43,8 +43,18 @@
         />
       </div>
     </div>
-    <CommentsLikesList :post="post" :comment="comment" :commentsLikesCount="commentsLikesCount" />
-    <button
+  
+    
+    <div class="footer d-flex justify-content-between">
+        <CommentsLikesList :post="post" :comment="comment" :commentsLikesCount="commentsLikesCount" />
+        <p class="text-secondary comment-date">
+          {{
+            moment(comment.updatedAt)
+              .locale('fr')
+              .fromNow()
+          }}
+        </p>
+       <button
           @click="likeOrUnlikeComment"
           class="react-btn footer-btn btn-block"
           aria-label="Liker ou disliker"
@@ -68,13 +78,7 @@
 
           <span :class="`ml-2 ${likesThisComment ? 'blue' : ''}`">J'aime</span>
         </button>
-    <p class="text-secondary comment-date">
-      {{
-        moment(comment.updatedAt)
-          .locale('fr')
-          .fromNow()
-      }}
-    </p>
+      </div>    
   </div>
 </template>
 

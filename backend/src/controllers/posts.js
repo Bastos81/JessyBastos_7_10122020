@@ -76,7 +76,6 @@ exports.modifyPost = (req, res, next) => {
         }`
       }
     : { ...req.body }
-
   Post.findOne({
     where: { id: req.params.id, userId: req.user.id },
     include: db.User
@@ -93,11 +92,9 @@ exports.deletePost = (req, res, next) => {
   const where = {
     id: req.params.id
   }
-
   if (!req.user.admin) {
     where.userId = req.user.id
   }
-
   Post.findOne({ where })
     .then(post => {
       if (!post) {

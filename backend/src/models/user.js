@@ -19,6 +19,7 @@ module.exports = (sequelize, DataTypes) => {
         deleted: true,
         email: `deleted-user${this.id}@groupomania.com`,
         imageUrl: null,
+        bio: null,
         firstName: 'Utilisateur',
         lastName: 'Supprimé'
       })

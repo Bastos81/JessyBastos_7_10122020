@@ -21,6 +21,7 @@ module.exports = (sequelize, DataTypes) => {
   Notification.init(
     {
       postId: DataTypes.INTEGER,
+      commentsId: DataTypes.INTEGER,
       recipientUserId: DataTypes.INTEGER,
       senderUserId: DataTypes.INTEGER,
       content: DataTypes.TEXT,

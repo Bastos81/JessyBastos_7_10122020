@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate (models) {
       Comments.belongsTo(models.User, { foreignKey: 'userId' })
-      Comments.belongsTo(models.Post, { foreignKey: 'postId' })
+      Comments.belongsTo(models.Post, { foreignKey: 'postId' },)
     }
     readableCreatedAt () {
       return moment(this.createdAt)

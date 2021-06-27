@@ -12,6 +12,10 @@ module.exports = {
         allowNull: false,
         type: Sequelize.INTEGER,
       },
+      commentsId: {
+        allowNull: true,
+        type: Sequelize.INTEGER,
+      },
       recipientUserId: {
         allowNull: false,
         type: Sequelize.INTEGER,

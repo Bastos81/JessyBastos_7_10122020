@@ -13,7 +13,7 @@ router.put('/auth/edit', auth, multer, userCtrl.editUser)
 
 router.get('/users/:id', auth, userCtrl.getOneUser)
 router.get('/users', auth, userCtrl.getAllUsers)
-router.delete('users/:id', auth, userCtrl.deleteUserAccount)
+router.delete('/users/:id', auth, userCtrl.deleteUserAccount)
 
 router.get('/notifications', auth, notificationsCtrl.getNotificationsOfOneUser)
 router.delete('/notifications/:id', auth, notificationsCtrl.deleteNotification)
