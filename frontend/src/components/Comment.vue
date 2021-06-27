@@ -43,7 +43,7 @@
         />
       </div>
     </div>
-    <CommentsLikesList :comment="comment" :commentsLikesCount="commentsLikesCount" />
+    <CommentsLikesList :post="post" :comment="comment" :commentsLikesCount="commentsLikesCount" />
     <button
           @click="likeOrUnlikeComment"
           class="react-btn footer-btn btn-block"
@@ -96,7 +96,6 @@ export default {
   async mounted () {
     const res = await apiClient.get(`api/posts/${this.post.id}/comments/${this.comment.id}/commentsLike`)
     this.likesThisComment = res.commentsLike
-    console.log(this.commentsLikesCount)
   },
   data () {
     return {

@@ -32,8 +32,7 @@ exports.getLikeOnOneComments = async (req, res, next) => {
 exports.getAllLikesOfOneComments = async (req, res, next) => {
   try {
     const allCommentsLikes = await CommentsLikes.findAll({
-      where: { commentsId: req.params.commentsId },
-      include: db.Post,
+      where: { postId: req.params.postId, commentsId: req.params.commentsId },
       include: db.User
     })
     res.status(200).json({ allCommentsLikes })

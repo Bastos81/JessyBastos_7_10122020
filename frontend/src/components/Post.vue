@@ -138,7 +138,6 @@ export default {
   methods: {
     async likeOrUnlikePost () {
       const res = await apiClient.post(`api/posts/${this.post.id}/likes`)
-
       if (res.like !== this.likesThisPost) {
         this.likesCount += res.like ? 1 : -1
       }
