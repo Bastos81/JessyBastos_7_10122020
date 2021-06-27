@@ -57,8 +57,6 @@
 </template>
 
 <script>
-import { apiClient } from '../services/ApiClient'
-
 export default {
   name: 'EditPost',
   props: [

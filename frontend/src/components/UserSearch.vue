@@ -133,7 +133,7 @@ export default {
 
   .search-btn-mobile {
     top: 20px;
-    right: 110px;
+    right: 150px;
     color: #747474;
     font-size: 1.1rem;
     z-index: 2;

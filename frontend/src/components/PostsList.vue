@@ -11,7 +11,6 @@
 </template>
 
 <script>
-import router from '../router/index'
 import { mapState, mapActions } from 'vuex'
 import Post from './Post'
 
@@ -36,7 +35,7 @@ export default {
   methods: {
     ...mapActions(['initializePostStore', 'loadMore']),
 
-    handleScroll (event) {
+    handleScroll () {
       const totalHeight = document.documentElement.scrollHeight
       const scrollHeight = window.scrollY + window.innerHeight
       const remainingOffset = totalHeight - scrollHeight

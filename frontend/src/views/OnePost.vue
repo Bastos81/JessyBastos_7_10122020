@@ -12,7 +12,6 @@
 
 <script>
 import { apiClient } from '../services/ApiClient'
-import router from '../router/index'
 import Post from '../components/Post'
 import Menu from '../components/Menu'
 
@@ -28,7 +27,7 @@ export default {
     }
   },
   watch: {
-    $route (to, from) {
+    $route () {
       this.loadPost()
     }
   },

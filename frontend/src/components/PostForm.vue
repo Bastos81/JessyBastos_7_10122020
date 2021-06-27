@@ -80,7 +80,6 @@
 </template>
 
 <script>
-import { apiClient } from '../services/ApiClient'
 import ProfileImage from './ProfileImage'
 
 export default {
