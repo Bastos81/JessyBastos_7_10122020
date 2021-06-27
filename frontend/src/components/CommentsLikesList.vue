@@ -19,7 +19,7 @@
       </div>
       <span class="commentsLikes-number ml-2">{{ commentsLikesCount }}</span>
     </button>
-    <b-modal :id="`modal-likes-${comment.id}`" :title="`${commentsLikesCount} J'aime`">
+    <b-modal :id="`modal-commentsLikes-${comment.id}`" :title="`${commentsLikesCount} J'aime`">
       <div v-for="commentsLike in commentsLikesList" :key="commentsLike.id">
         <router-link
           :to="{ name: 'UserProfile', params: { userId: commentsLike.User.id } }"

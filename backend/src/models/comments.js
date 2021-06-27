@@ -12,7 +12,11 @@ module.exports = (sequelize, DataTypes) => {
     static associate (models) {
       Comments.belongsTo(models.User, { foreignKey: 'userId' })
       Comments.belongsTo(models.Post, { foreignKey: 'postId' })
-      Comments.hasMany(models.CommentsLikes)
+    }
+    readableCreatedAt () {
+      return moment(this.createdAt)
+        .locale('fr')
+        .format('LL')
     }
   }
   Comments.init(

@@ -27,14 +27,14 @@ module.exports = (sequelize, DataTypes) => {
   )
 
   CommentsLikes.afterCreate(async commentsLike => {
-    const comment = await commentsLike.getComments()
+    const comment = await commentsLike.getComment()
     await comment.update({
       commentsLikesCount: comment.commentsLikesCount + 1
     })
   })
 
   CommentsLikes.afterDestroy(async commentsLike => {
-    const comment = await commentsLike.getComments()
+    const comment = await commentsLike.getComment()
     await comment.update({
       commentsLikesCount: comment.commentsLikesCount - 1
     })

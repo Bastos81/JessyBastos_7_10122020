@@ -96,13 +96,14 @@ export default {
   async mounted () {
     const res = await apiClient.get(`api/posts/${this.post.id}/comments/${this.comment.id}/commentsLike`)
     this.likesThisComment = res.commentsLike
+    console.log(this.commentsLikesCount)
   },
   data () {
     return {
       userData: JSON.parse(localStorage.getItem('userData')),
       isEditing: false,
       likesThisComment: false,
-      commentsLikesCount: this.comment.commentsLikesCount
+      commentsLikesCount: this.comment.commentsLikesCount,
     }
   },
   methods: {
@@ -110,11 +111,9 @@ export default {
 
     async likeOrUnlikeComment () {
       const res = await apiClient.post(`api/posts/${this.post.id}/comments/${this.comment.id}/commentsLikes`)
-
       if (res.commentsLike !== this.likesThisComment) {
         this.commentsLikesCount += res.commentsLike ? 1 : -1
       }
-
       this.likesThisComment = res.commentsLike
     },
 
