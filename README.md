@@ -1,4 +1,4 @@
-# Creation of a corporate social network
+# Creation d'un réseau social d'entreprise
 
 ## Getting started
 
@@ -6,25 +6,26 @@
 
 ### Frontend :
 
-
+```
 cd frontend
 npm install 
 npm run serve
-
+```
 
 ### Backend :
 
-
+```
 cd backend
 npm install
 nodemon server
-
+```
 
 ### Database :
 
+```
 cd backend
-
 npx sequelize-cli db:create
 npx sequelize-cli db:migrate
+```
 
 http://localhost:8080/
