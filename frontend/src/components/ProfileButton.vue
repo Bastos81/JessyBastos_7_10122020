@@ -27,16 +27,7 @@
             @click="changeOrReloadPage('Profile')"
             aria-label="Voir mon profil"
           >
-            <b-icon icon="person" class="mr-2"></b-icon>Voir mon profil
-          </button>
-        </p>
-        <p class="card-text">
-          <button
-            class="collapsed-btn btn-block text-left"
-            @click="changeOrReloadPage('Posts')"
-            aria-label="Voir la page d'accueil"
-          >
-            <b-icon icon="house" class="mr-2"></b-icon>Voir la page d'accueil
+            <b-icon icon="person" class="mr-2"></b-icon>Modifier mon profil
           </button>
         </p>
         <p class="card-text">
@@ -95,7 +86,7 @@ export default {
   height: 45px;
   padding: 5px 5px 5px 16px;
   box-shadow: 0px 1px 1px 1px rgba(204, 204, 204, 0.2);
-  background-color: rgba(108, 117, 125, 0.1) !important;
+  background-color:  rgb(255, 255, 255) !important;
   border-radius: 40px;
   z-index: 2;
   &:focus {

@@ -108,7 +108,7 @@ export default {
   top: 22px;
   right: 175px;
   box-shadow: 0px 1px 1px 1px rgba(204, 204, 204, 0.2);
-  background-color: rgba(108, 117, 125, 0.1) !important;
+  background-color:  rgb(255, 255, 255) !important;
   border-radius: 100%;
   width: 42px;
   height: 42px;

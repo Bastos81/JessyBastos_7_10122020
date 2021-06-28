@@ -16,7 +16,7 @@
           id="content"
           :placeholder="`Que voulez-vous partager, ${userData.firstName} ?`"
           aria-label="Écrire une publication"
-          class="text-dark mb-2 mr-2 w-100"
+          class="text-dark mb-2 mr-2 w-100 post-text-area"
         ></b-form-textarea>
       </div>
       <div
@@ -127,6 +127,10 @@ export default {
 
 .disabled {
   cursor: not-allowed;
+}
+
+.post-text-area{
+  margin-left: 5px;
 }
 
 .form-control {

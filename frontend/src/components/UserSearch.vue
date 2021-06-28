@@ -94,7 +94,7 @@ export default {
   &__content {
     padding: 10px 18px;
     box-shadow: 0px 1px 1px 1px rgba(204, 204, 204, 0.2);
-    background-color: rgba(108, 117, 125, 0.1) !important;
+    background-color: rgb(255, 255, 255) !important;
     border-radius: 40px;
     border: none;
     .search-text {

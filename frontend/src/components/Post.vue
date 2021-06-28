@@ -14,7 +14,7 @@
               divCustomClass="div-post-picture"
           /></router-link>
         </div>
-        <div class="text-left">
+        <div class="text-left post-name-box">
           <router-link
             :to="{ name: 'UserProfile', params: { userId: post.User.id } }"
             ><p class="font-weight-bold mb-0">
@@ -32,7 +32,7 @@
       </div>
       <EditPost :post="post" />
 
-      <b-card-text class="text-left mt-3 mb-0 mb-lg-3" v-if="post.content">
+      <b-card-text class="text-left mt-3 mb-0 mb-lg-3 post-text" v-if="post.content">
         {{ post.content }}
       </b-card-text>
 
@@ -161,6 +161,14 @@ export default {
 
 .post-profile-picture {
   height: 50px;
+}
+
+.post-name-box {
+  margin-left: 5px;
+}
+
+.post-text{
+  text-align: left;
 }
 
 @media screen and (min-width: 280px) and (max-width: 769px) {

@@ -69,8 +69,9 @@ export default {
   background-color: rgba(108, 117, 125, 0.1);
   padding: 0.375rem 0.75rem;
   padding-left: 15px;
+  margin-left: 5px;
   text-align: left;
-  border-radius: 0.25rem;
+  border-radius: 25px;
   margin-bottom: 0;
 }
 
