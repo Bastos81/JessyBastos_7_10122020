@@ -12,6 +12,9 @@
         <p class="user-name">
           {{ userProfile.firstName }} {{ userProfile.lastName }}
         </p>
+        <p class="user-bio">
+          {{ userProfile.bio }}
+        </p>
 
         <AdminDeleteAccount
           v-if="userData.admin && !userProfile.deleted"
@@ -40,7 +43,7 @@ export default {
     AdminDeleteAccount
   },
   watch: {
-    $route (to, from) {
+    $route () {
       window.location.reload()
     }
   },
@@ -73,6 +76,11 @@ export default {
 .user-name {
   font-size: 20px;
   font-weight: bold;
+}
+
+.user-bio {
+  font-size: 18px;
+  font-weight: 500px;
 }
 
 @media screen and (min-width: 280px) and (max-width: 767px) {

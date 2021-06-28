@@ -106,8 +106,9 @@ a {
   border-top: none;
 }
 
-.likes-number {
+.commentsLikes-number {
   font-size: 14px;
+  margin-left: 5px;
 }
 
 @media screen and (min-width: 280px) and (max-width: 767px) {
@@ -116,7 +117,7 @@ a {
   }
 
   .commentsLikes-number {
-    font-size: 25px;
+    font-size: 12px;
   }
 }
 

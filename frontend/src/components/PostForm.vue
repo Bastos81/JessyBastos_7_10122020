@@ -35,7 +35,7 @@
           type="button"
           aria-label="Choisir un fichier"
         >
-          <span class="mr-2 d-none d-md-block">Choisir un fichier</span>
+          <span class="postForm-fichier mr-2 d-none d-md-block">Choisir un fichier</span>
           <svg
             style="width:24px;height:24px;margin-bottom:5px"
             viewBox="0 0 24 24"
@@ -57,7 +57,7 @@
           type="submit"
           aria-label="Publier"
         >
-          <span class="mr-2 d-none d-md-block">Publier</span>
+          <span class="postForm-publier mr-2 d-none d-md-block">Publier</span>
           <svg
             style="width:24px;height:24px;margin-bottom:5px"
             viewBox="0 0 24 24"
@@ -163,5 +163,15 @@ export default {
     background-color: white !important;
     outline: none;
   }
+}
+
+.postForm-publier{
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+
+.postForm-fichier{
+  margin-right: 5px;
+  margin-bottom: 5px;
 }
 </style>

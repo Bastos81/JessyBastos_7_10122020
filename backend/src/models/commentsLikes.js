@@ -51,7 +51,7 @@ module.exports = (sequelize, DataTypes) => {
       content: `<b>${user.firstName} ${
         user.lastName
       }</b> a aimé votre commentaire du ${post.readableCreatedAt()}`,
-      recipientUserId: post.userId,
+      recipientUserId: comment.userId,
       postId: post.id,
       commentsId: comment.id,
       senderUserId: user.id

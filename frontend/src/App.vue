@@ -40,7 +40,7 @@ export default {
   background: rgb(255, 225, 220);
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
   z-index: 1;
-  border-radius: 0px 0px 200px 200px;
+  border-radius: 0px 0px 700px 700px;
   #logo {
     max-width: 300px;
   }

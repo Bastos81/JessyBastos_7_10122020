@@ -42,7 +42,7 @@ export default {
   },
   async mounted () {
     const res = await apiClient.get(
-      `api/posts/${this.post.id}/comments/?limit=2`
+      `api/posts/${this.post.id}/comments/?limit=1`
     )
     this.list = res.comments.rows
     this.count = res.comments.count
