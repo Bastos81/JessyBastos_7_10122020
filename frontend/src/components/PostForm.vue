@@ -19,7 +19,6 @@
           class="text-dark mb-2 mr-2 w-100 post-text-area"
         ></b-form-textarea>
       </div>
-      <span class="postForm-format mr-2 d-none d-md-block">Certains caractères spéciaux ne sont pas acceptés</span>
       <div
         id="preview"
         class="d-flex justify-content-center align-items-center"
@@ -76,7 +75,6 @@
           @change="onFileSelected"
         />
       </div>
-      <span class="postForm-format mr-2 d-none d-md-block">Formats acceptés : .gif, .png, .jpg et .jpeg</span>
     </b-form-group>
   </div>
 </template>
@@ -94,6 +92,9 @@ export default {
     return {
       userData: JSON.parse(localStorage.getItem('userData')),
       url: this.imgUrl,
+      input: {
+        content: '',
+      }
     }
   },
   watch: {
@@ -103,8 +104,14 @@ export default {
   },
   methods: {
     onFileSelected (event) {
-      this.url = URL.createObjectURL(event.target.files[0])
-      this.$emit('onFileSelected', event.target.files[0])
+      const regex = /(\.jpg|\.jpeg|\.gif|\.png)$/i
+      const postImg = event.target.files[0].name
+      if (!postImg.match(regex)) {
+        alert('Vous ne pouvez utiliser que les formats gif, jpg, jpeg et png')
+      } else {
+        this.url = URL.createObjectURL(event.target.files[0])
+        this.$emit('onFileSelected', event.target.files[0])
+      }
     },
     updateValue (value) {
       this.$emit('input', value)

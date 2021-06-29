@@ -25,7 +25,6 @@
         ></b-form-group>
       </b-form>
     </div>
-    <span class="postForm-format mr-2 d-none d-md-block">Certains caractères spéciaux ne sont pas acceptés</span>
   </div>
 </template>
 
@@ -42,21 +41,29 @@ export default {
   data () {
     return {
       content: '',
-      userData: JSON.parse(localStorage.getItem('userData'))
+      userData: JSON.parse(localStorage.getItem('userData')),
+      input: {
+        content: '',
+      }
     }
   },
   methods: {
     async createComment () {
-      if (!this.content.trim().length) return
-
-      const { comment } = await apiClient.post(
-        `api/posts/${this.post.id}/comments`,
-        {
-          content: this.content
-        }
-      )
-      this.content = ''
-      this.$emit('commentCreated', comment)
+      const regex = /^[a-z0-9-\d\-_.!?#*()"":;,=+$€£@&çéàèïë\s]+$/i
+      const postText = this.content
+      if (!postText.match(regex) && postText != '') {
+        alert('Certains caractères spéciaux ne sont pas acceptés !')
+      } else {
+          if (!this.content.trim().length) return
+            const { comment } = await apiClient.post(
+              `api/posts/${this.post.id}/comments`,
+              {
+                content: this.content
+              }
+            )
+            this.content = ''
+            this.$emit('commentCreated', comment)
+      }
     },
     newline () {
       this.content = `${this.content}\n`

@@ -39,7 +39,6 @@
                   />
                 </svg>
               </button>
-              <span class="postForm-format mr-2 d-none d-md-block">Formats acceptés : .gif, .png, .jpg et .jpeg</span>
               <div class="d-flex align-items-center">
                 <b-col sm="10">
                   <input
@@ -93,7 +92,6 @@
                   ></b-form-input>
                 </b-col>
               </div>
-              <span class="profil-bio-format mr-2 d-none d-md-block">Certains caractères spéciaux ne sont pas acceptés</span>
               <div class="d-flex align-items-center">
                 <b-col sm="2" class="d-none d-lg-block p-0">
                   <label for="bio"> Bio </label>
@@ -124,6 +122,7 @@
               </div>
             </b-form-group>
             <button
+              v-on:click.stop="textValidation()"
               type="submit"
               :class="`save-btn ${emptyInput ? 'disabled' : ''}`"
               :disabled="emptyInput"
@@ -172,9 +171,37 @@ export default {
     }
   },
   methods: {
-    onFileSelected () {
-      this.url = URL.createObjectURL(event.target.files[0])
-      this.selectedFile = event.target.files[0]
+    textValidation () {
+      const regexName = /^[a-z\d\-_""çéàèïë\s]+$/i
+      const regexBio = /^[a-z0-9-\d\-_.!?#*()"":;,=+$€£@&çéàèïë\s]+$/i
+      const profileFirstName = this.input.firstName
+      const profileLastName = this.input.lastName
+      const profileBio = this.input.bio
+      if (profileFirstName.match(regexName)) {
+        console.log("ok prénom");
+        if (profileLastName.match(regexName)) {
+          console.log("ok nom");
+          if (profileBio.match(regexBio) || profileBio == '') {
+            console.log("ok bio");
+            } else {
+                alert('Certains caractères spéciaux ne sont pas acceptés dans votre bio !')
+          }
+          } else {
+              alert('Certains caractères spéciaux ne sont pas acceptés dans votre nom!')
+        }
+        } else {
+            alert('Certains caractères spéciaux ne sont pas acceptés dans votre prénom!')
+      }
+    },
+    onFileSelected (event) {
+      const regex = /(\.jpg|\.jpeg|\.gif|\.png)$/i
+      const postImg = event.target.files[0].name
+      if (!postImg.match(regex)) {
+        alert('Vous ne pouvez utiliser que les formats gif, jpg, jpeg et png')
+      } else {
+        this.url = URL.createObjectURL(event.target.files[0])
+        this.selectedFile = event.target.files[0]
+      }
     },
 
     triggerInput () {
@@ -195,6 +222,7 @@ export default {
       apiClient.put('api/auth/edit', body, { isFormData }).then(res => {
         localStorage.setItem('userData', JSON.stringify(res.user))
         this.userData = res.user
+         alert('Profil modifié!')
         window.location.reload()
       })
     }

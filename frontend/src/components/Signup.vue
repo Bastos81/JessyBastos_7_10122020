@@ -96,24 +96,44 @@ export default {
         this.input.email != '' &&
         this.input.password != ''
       ) {
-        apiClient
-          .post('api/auth/signup', this.input)
-          .then(data => {
-            if (!data.token) {
-              this.errorMessage = data.error.errors[0].message
-            } else {
-              localStorage.setItem('userToken', data.token)
-              localStorage.setItem('userData', JSON.stringify(data.user))
-              router.push({ name: 'Posts' })
-            }
-          })
-          .catch(error => {
-            if (error.error) {
-              return (this.errorMessage = error.error.errors[0].message)
-            }
+        const regexName = /^[a-z\d\-_""çéàèïë\s]+$/i
+        const regexEmail = /^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4})*$/
+        const profileFirstName = this.input.firstName
+        const profileLastName = this.input.lastName
+        const profileEmail = this.input.email
+        if (profileFirstName.match(regexName)) {
+          console.log("ok prénom");
+          if (profileLastName.match(regexName)) {
+            console.log("ok nom");
+            if (profileEmail.match(regexEmail)) {
+              console.log("ok Email");
+              apiClient
+                .post('api/auth/signup', this.input)
+                .then(data => {
+                  if (!data.token) {
+                    this.errorMessage = data.error.errors[0].message
+                  } else {
+                    localStorage.setItem('userToken', data.token)
+                    localStorage.setItem('userData', JSON.stringify(data.user))
+                    router.push({ name: 'Posts' })
+                  }
+                })
+                .catch(error => {
+                  if (error.error) {
+                    return (this.errorMessage = error.error.errors[0].message)
+                  }
 
-            this.errorMessage = 'Problème de connexion'
-          })
+                  this.errorMessage = 'Problème de connexion'
+                })
+              } else {
+                  alert('Merci de renseigner une adresse e-mail valide.')
+            }
+            } else {
+                alert('Certains caractères spéciaux ne sont pas acceptés dans votre nom!')
+          }
+          } else {
+              alert('Certains caractères spéciaux ne sont pas acceptés dans votre prénom!')
+        }
       } else {
         this.errorMessage = 'Veuillez renseigner un email et un mot de passe'
       }

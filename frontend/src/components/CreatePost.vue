@@ -36,12 +36,18 @@ export default {
     },
 
     async onSubmit (event) {
-      await this.createPost({
+      const regex = /^[a-z0-9-\d\-_.!?#*()"":;,=+$€£@&çéàèïë\s]+$/i
+      const postText = this.content
+        if (!postText.match(regex) && postText != '') {
+        alert('Certains caractères spéciaux ne sont pas acceptés !')
+      } else {
+        await this.createPost({
         selectedFile: this.selectedFile,
         content: this.content
       })
       this.displayNotification('Publication créée !')
       this.resetForm(event)
+      }
     },
 
     resetForm (event) {

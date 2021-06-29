@@ -18,7 +18,7 @@ function usersImagesEntryValidation (value) {
 
 function usersTextEntryValidation (value) {
   const regex = /^[a-z0-9-\d\-_.!?#*()"":;,=+$€£@&çéàèïë\s]+$/i
-  if (!value.match(regex)) {
+  if (!value.match(regex) && value != '') {
     throw new Error(
       'Certains caractères spéciaux ne sont pas acceptés !'
     )
