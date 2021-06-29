@@ -23,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
         deleted: true,
         email: `deleted-user${this.id}@groupomania.com`,
         imageUrl: null,
-        bio: null,
+        bio: 'Utilisateur Supprimé',
         firstName: 'Utilisateur',
         lastName: 'Supprimé'
       })
@@ -70,7 +70,8 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: true,
         validate: {
           usersTextEntryValidation
-        }
+        },
+        defaultValue: '#teamGroupomania'
       },
       admin: {
         type: DataTypes.BOOLEAN,

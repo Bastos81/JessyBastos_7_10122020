@@ -1,5 +1,5 @@
 function usersClassicEntryValidation (value) {
-  const regex = /^[a-z\d\-_\s]+$/i
+  const regex = /^[a-z\d\-_""çéàèïë\s]+$/i
   if (!value.match(regex)) {
     throw new Error(
       'Les caractères spéciaux ne sont pas acceptés !'

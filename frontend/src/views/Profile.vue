@@ -39,6 +39,7 @@
                   />
                 </svg>
               </button>
+              <span class="postForm-format mr-2 d-none d-md-block">Formats acceptés : .gif, .png, .jpg et .jpeg</span>
               <div class="d-flex align-items-center">
                 <b-col sm="10">
                   <input
