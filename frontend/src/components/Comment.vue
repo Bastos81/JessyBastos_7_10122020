@@ -57,7 +57,7 @@
        <button
           @click="likeOrUnlikeComment"
           class="react-btn footer-btn btn-block"
-          aria-label="Liker ou disliker"
+          aria-label="Liker ou disliker le commentaire"
         >
           <svg
             v-if="likesThisComment"

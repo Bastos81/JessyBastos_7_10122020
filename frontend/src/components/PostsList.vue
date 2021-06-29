@@ -63,10 +63,11 @@ export default {
   display: block;
   overflow: hidden;
   width: 100%;
-  height: 350px;
+  max-height: 350px;
   &__image {
-    max-width: 100%;
+    width: 100%;
     max-height: 100%;
+    object-fit: cover;
     &:focus {
       outline: none;
     }
