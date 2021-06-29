@@ -15,7 +15,7 @@
         <p class="user-bio">
           {{ userProfile.bio }}
         </p>
-
+    
         <AdminDeleteAccount
           v-if="userData.admin && !userProfile.deleted"
           :userProfile="userProfile"

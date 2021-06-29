@@ -25,6 +25,7 @@
         ></b-form-group>
       </b-form>
     </div>
+    <span class="postForm-format mr-2 d-none d-md-block">Certains caractères spéciaux ne sont pas acceptés</span>
   </div>
 </template>
 

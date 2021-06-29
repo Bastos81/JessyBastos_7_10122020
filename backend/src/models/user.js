@@ -6,6 +6,10 @@ const {
   addAuthenticationOn
 } = require('../middleware/passwordValidation')
 
+const { usersClassicEntryValidation, 
+  usersTextEntryValidation 
+} = require('../middleware/usersEntryValidation')
+
 const { deleteFile } = require('../middleware/deleteFile')
 
 module.exports = (sequelize, DataTypes) => {
@@ -29,11 +33,17 @@ module.exports = (sequelize, DataTypes) => {
     {
       firstName: {
         type: DataTypes.STRING(30),
-        allowNull: false
+        allowNull: false,
+        validate: {
+          usersClassicEntryValidation
+        }
       },
       lastName: {
         type: DataTypes.STRING(40),
-        allowNull: false
+        allowNull: false,
+        validate: {
+          usersClassicEntryValidation
+        }
       },
       email: {
         type: DataTypes.STRING(60),
@@ -57,7 +67,10 @@ module.exports = (sequelize, DataTypes) => {
       imageUrl: DataTypes.STRING,
       bio: {
         type: DataTypes.STRING,
-        allowNull: true
+        allowNull: true,
+        validate: {
+          usersTextEntryValidation
+        }
       },
       admin: {
         type: DataTypes.BOOLEAN,

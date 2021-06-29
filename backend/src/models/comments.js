@@ -2,6 +2,9 @@
 
 const { Model } = require('sequelize')
 
+const { usersTextEntryValidation 
+} = require('../middleware/usersEntryValidation')
+
 module.exports = (sequelize, DataTypes) => {
   class Comments extends Model {
     /**
@@ -25,7 +28,10 @@ module.exports = (sequelize, DataTypes) => {
       userId: DataTypes.INTEGER,
       content: {
         type: DataTypes.TEXT,
-        allowNull: false
+        allowNull: false,
+        validate: {
+          usersTextEntryValidation
+        }
       },
       commentsLikesCount: DataTypes.INTEGER
     },

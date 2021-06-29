@@ -92,6 +92,7 @@
                   ></b-form-input>
                 </b-col>
               </div>
+              <span class="profil-bio-format mr-2 d-none d-md-block">Certains caractères spéciaux ne sont pas acceptés</span>
               <div class="d-flex align-items-center">
                 <b-col sm="2" class="d-none d-lg-block p-0">
                   <label for="bio"> Bio </label>
@@ -248,6 +249,13 @@ export default {
   padding-bottom: 0;
 }
 
+
+.profil-bio-format {
+  margin-left: 15px;
+  color: #747474;
+  font-size: 15px;
+}
+
 @media screen and (min-width: 280px) and (max-width: 769px) {
   .create-button {
     width: 100% !important;
@@ -265,5 +273,6 @@ export default {
   .shadow {
     box-shadow: 0rem 0.2rem 0.5rem rgba(0, 0, 0, 0.08) !important;
   }
+
 }
 </style>

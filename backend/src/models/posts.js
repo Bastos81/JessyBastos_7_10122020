@@ -1,6 +1,9 @@
 'use strict'
 const { Model } = require('sequelize')
 
+const { usersImagesEntryValidation, 
+  usersTextEntryValidation 
+} = require('../middleware/usersEntryValidation')
 const { deleteFile } = require('../middleware/deleteFile')
 const moment = require('moment')
 
@@ -25,8 +28,18 @@ module.exports = (sequelize, DataTypes) => {
   Post.init(
     {
       userId: DataTypes.INTEGER,
-      imageUrl: DataTypes.STRING,
-      content: DataTypes.TEXT,
+      imageUrl: {
+        type: DataTypes.STRING,
+        validate: {
+          usersImagesEntryValidation
+        }
+      },
+      content: {
+        type: DataTypes.TEXT,
+        validate: {
+          usersTextEntryValidation
+        }
+      },
       likesCount: DataTypes.INTEGER,
       commentsCount: DataTypes.INTEGER
     },

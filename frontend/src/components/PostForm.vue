@@ -75,6 +75,8 @@
           @change="onFileSelected"
         />
       </div>
+      <span class="postForm-format mr-2 d-none d-md-block">Certains caractères spéciaux ne sont pas acceptés</span>
+      <span class="postForm-format mr-2 d-none d-md-block">Formats acceptés : .gif, .png, .jpg et .jpeg</span>
     </b-form-group>
   </div>
 </template>
@@ -91,7 +93,7 @@ export default {
   data () {
     return {
       userData: JSON.parse(localStorage.getItem('userData')),
-      url: this.imgUrl
+      url: this.imgUrl,
     }
   },
   watch: {
@@ -173,5 +175,10 @@ export default {
 .postForm-fichier{
   margin-right: 5px;
   margin-bottom: 5px;
+}
+
+.postForm-format{
+  color: #747474;
+  font-size: 15px;
 }
 </style>
