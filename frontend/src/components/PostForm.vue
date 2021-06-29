@@ -19,6 +19,7 @@
           class="text-dark mb-2 mr-2 w-100 post-text-area"
         ></b-form-textarea>
       </div>
+      <span class="postForm-format mr-2 d-none d-md-block">Certains caractères spéciaux ne sont pas acceptés</span>
       <div
         id="preview"
         class="d-flex justify-content-center align-items-center"
@@ -75,7 +76,6 @@
           @change="onFileSelected"
         />
       </div>
-      <span class="postForm-format mr-2 d-none d-md-block">Certains caractères spéciaux ne sont pas acceptés</span>
       <span class="postForm-format mr-2 d-none d-md-block">Formats acceptés : .gif, .png, .jpg et .jpeg</span>
     </b-form-group>
   </div>
@@ -179,6 +179,7 @@ export default {
 
 .postForm-format{
   color: #747474;
-  font-size: 15px;
+  font-size: 14px;
+  margin-bottom: 10px;
 }
 </style>
