@@ -19,6 +19,24 @@ cd backend
 npm install
 nodemon server
 ```
+### Utilisation de :
+
+```
+backend :
+    express
+    bcrypt
+    jsonwebtoken
+    multer
+    sequelize (cli + pilote MySql)
+
+frontend :
+    vue
+    vuex
+    vue-router
+    vue-route-middleware
+    moment
+    bootstrap (-vue et -icons-vue)
+```
 
 ### Database :
 
