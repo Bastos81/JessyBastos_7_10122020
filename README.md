@@ -1,6 +1,6 @@
 # Creation d'un réseau social d'entreprise
 
-## Getting started
+## Pour commencer
 
 `git clone git@github.com:Bastos81/JessyBastos_7_10122020.git`
 
