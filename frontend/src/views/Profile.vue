@@ -173,7 +173,7 @@ export default {
   methods: {
     textValidation () {
       const regexName = /^[a-z\d\-_""çéàèïë\s]+$/i
-      const regexBio = /^[a-z0-9-\d\-_.!?#*()"":;,=+$€£@&çéàèïë\s]+$/i
+      const regexBio = /^[a-z0-9-\d\-_.!?#*()""':;,=+$€£@&çéàèïë\s]+$/i
       const profileFirstName = this.input.firstName
       const profileLastName = this.input.lastName
       const profileBio = this.input.bio
