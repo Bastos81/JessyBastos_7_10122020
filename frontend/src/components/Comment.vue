@@ -142,7 +142,7 @@ export default {
       this.comment.content = `${this.comment.content}\n`
     },
     async modifyComment () {
-      const regex = /^[a-z0-9-\d\-_.!?#*()"":;,=+$€£@&çéàèïë\s]+$/i
+      const regex = /^[a-z0-9-\d\-_.!?#*()"":;,=+$€£@&çéöôàèïë\s]+$/i
       const postText = this.comment.content 
       console.log(postText)
       if (!postText.match(regex) && postText != '') {

@@ -1,5 +1,5 @@
 function usersClassicEntryValidation (value) {
-  const regex = /^[a-z\d\-_""çéàèïë\s]+$/i
+  const regex = /^[a-z\d\-_""çéàèöôïë\s]+$/i
   if (!value.match(regex)) {
     throw new Error(
       'Les caractères spéciaux ne sont pas acceptés !'
@@ -17,7 +17,7 @@ function usersImagesEntryValidation (value) {
 }
 
 function usersTextEntryValidation (value) {
-  const regex = /^[a-z0-9-\d\-_.!?#*()"":;,'=+$€£@&çéàèïë\s]+$/i
+  const regex = /^[a-z0-9-\d\-_.!?#*()"":;,'=+$€£@&çéöôàèïë\s]+$/i
   if (!value.match(regex) && value != '') {
     throw new Error(
       'Certains caractères spéciaux ne sont pas acceptés !'
