@@ -141,16 +141,22 @@ export default {
     newline () {
       this.comment.content = `${this.comment.content}\n`
     },
-
     async modifyComment () {
-      const res = await apiClient.put(
-        `api/posts/${this.post.id}/comments/${this.comment.id}`,
-        { content: this.comment.content }
-      )
-      this.comment.updatedAt = res.comment.updatedAt
-      this.isEditing = false
-      this.displayNotification('Commentaire modifié !')
-    }
+      const regex = /^[a-z0-9-\d\-_.!?#*()"":;,=+$€£@&çéàèïë\s]+$/i
+      const postText = this.comment.content 
+      console.log(postText)
+      if (!postText.match(regex) && postText != '') {
+        alert('Certains caractères spéciaux ne sont pas acceptés !')
+      } else {
+        const res = await apiClient.put(
+          `api/posts/${this.post.id}/comments/${this.comment.id}`,
+          { content: this.comment.content }
+        )
+        this.comment.updatedAt = res.comment.updatedAt
+        this.isEditing = false
+        this.displayNotification('Commentaire modifié !')
+      }
+    },
   }
 }
 </script>

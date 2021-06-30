@@ -65,14 +65,20 @@ export default {
     },
 
     async onUpload () {
-      if (!this.content.trim().length) return
-      await this.modifyPost({
-        postId: this.post.id,
-        selectedFile: this.selectedFile,
-        content: this.content
-      })
-      this.displayNotification('Publication modifiée !')
-    }
+      const regex = /^[a-z0-9-\d\-_.!?#*()"":;,=+$€£@&çéàèïë\s]+$/i
+      const postText = this.content
+        if (!postText.match(regex) && postText != '') {
+        alert('Certains caractères spéciaux ne sont pas acceptés !')
+      } else {
+        if (!this.content.trim().length) return
+        await this.modifyPost({
+          postId: this.post.id,
+          selectedFile: this.selectedFile,
+          content: this.content
+        })
+        this.displayNotification('Publication modifiée !')
+      }
+    },
   }
 }
 </script>

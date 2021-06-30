@@ -11,8 +11,8 @@ export default {
       }
     },
     actions: {
-      displayNotification ({ commit }, message) {
-        commit('ADD_NOTIFICATION', message)
+      displayNotification ({ commit }) {
+        commit('ADD_NOTIFICATION')
         setTimeout(() => commit('REMOVE_NOTIFICATION'), 3000)
       }
     }
