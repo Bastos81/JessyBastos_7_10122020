@@ -49,7 +49,7 @@ export default {
   },
   methods: {
     async createComment () {
-      const regex = /^[a-z0-9-\d\-_.!?#*()"":;,=+$€£@&çéàèïë\s]+$/i
+      const regex = /^[a-z0-9-\d\-_.!?#*()""':;,=+$€£@&çéàèïë\s]+$/i
       const postText = this.content
       if (!postText.match(regex) && postText != '') {
         alert('Certains caractères spéciaux ne sont pas acceptés !')

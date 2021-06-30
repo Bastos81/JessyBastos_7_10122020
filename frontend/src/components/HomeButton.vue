@@ -27,7 +27,7 @@ export default {
 <style lang="scss">
 .home-btn {
   top: 22px;
-  right: 250px;
+  right: 300px;
   box-shadow: 0px 1px 1px 1px rgba(204, 204, 204, 0.2);
   background-color:  rgb(255, 255, 255) !important;
   border-radius: 100%;
